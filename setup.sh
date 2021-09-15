@@ -1,24 +1,34 @@
-echo "Running Setup"
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+echo "${RED}Running Setup${NC}"
 sleep 1
-sudo apt update && sudo apt upgrade
+sudo apt update && sudo apt upgrade -y
 sleep 1
-echo "Start installing ependencies"
+echo "${CYAN}Start installing dependencies${NC}"
 sleep 1
 
 #Install Dependencies
-echo "Installing Flatpak..."
+echo "${CYAN}Installing Flatpak...${NC}"
 sudo apt install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak update
 
+
+#Install tools
+echo "${CYAN}Install htop, nano, neofetch...${NC}"
+sudo apt install htop nano neofetch
+
+
 #Install Apps
-echo "Installing Evolution Email..."
+echo "${CYAN}Installing Evolution Email...${NC}"
 sudo apt install evolution
 
-echo "Installing KeepassXC..."
+echo "${CYAN}Installing KeepassXC...${NC}"
 sudo apt install keepassxc
 
-echo "Installing Chromium..."
+echo "${CYAN}Installing Chromium...${NC}"
 sudo apt install chromium-browser
 git clone https://github.com/proprietary/chromium-widevine.git && \
 	cd chromium-widevine && \
@@ -27,17 +37,13 @@ git clone https://github.com/proprietary/chromium-widevine.git && \
 	killall -q -SIGTERM chromium && \
 	exec $(command -v chromium-browser || command -v chromium) ./test-widevine.html &
 
-
-echo "Installing neofetch..."
-sudo apt install neofetch
-
-echo "Installing Spotify..."
+echo "${CYAN}Installing Spotify...${NC}"
 flatpak install flathub -y com.spotify.Client
 
-echo "Installing VSCode..."
+echo "${CYAN}Installing VSCode...${NC}"
 flatpak install flathub -y com.visualstudio.code
 
-echo "Autoremove..."
+echo "${CYAN}Autoremove...${NC}"
 sudo apt autoremove -y
 neofetch
-echo "Done!"
+echo "${GREEN}Done!${NC}"
