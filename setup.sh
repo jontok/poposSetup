@@ -17,9 +17,15 @@ flatpak update
 
 
 #Install tools
-echo "${CYAN}Install htop, nano, neofetch...${NC}"
-sudo apt install htop nano neofetch
+echo "${CYAN}Install htop, nano, neofetch, tweaks...${NC}"
+sudo apt install htop nano neofetch 
+sudo apt-get install gnome-tweaks 
 
+#Install icons
+echo "${CYAN}Get Papirus-Icons${NC}"
+sudo add-apt-repository ppa:papirus/papirus
+sudo apt-get update
+sudo apt-get install papirus-icon-theme
 
 #Install Apps
 echo "${CYAN}Installing Evolution Email...${NC}"
