@@ -15,6 +15,24 @@ sudo apt install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak update
 
+#Install Theme and Icons
+echo "${CYAN}Install Gnome-Tweak-Tool and Gnome extenstion...${NC}"
+sudo apt install gnome-tweak-tool
+sudo apt install gnome-shell-extensions
+sudo apt install chrome-gnome-shell
+
+echo "${CYAN}Get Icon Set Numix-Circle...${NC}"
+sudo add-apt-repository ppa:numix/ppa
+sudo apt install numix-icon-theme-circle
+
+echo "${CYAN}Get GTK-Theme Flat Remix...${NC}"
+sudo add-apt-repository ppa:daniruiz/flat-remix
+sudo apt update
+sudo apt install flat-remix-gtk
+
+echo "${CYAN}Get Shell-Theme Flat Remix...${NC}"
+sudo apt install flat-remix-gnome
+
 
 #Install tools
 echo "${CYAN}Install htop, nano, neofetch, tweaks...${NC}"
