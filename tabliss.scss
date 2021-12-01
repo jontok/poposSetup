@@ -1,0 +1,101 @@
+.Overlay {
+    position: absolute;
+    left: 94%;
+    width: max-content;
+    display: flex;
+    flex-direction: row-reverse;
+    overflow-y: hidden;
+}
+  
+.Settings {
+    .plane {
+        position: absolute;
+        left: 77.4%;
+        border-radius: 1rem 0 0 1rem;
+        overflow-y: auto;
+        background-color: #4d4d4d;
+        color: #ffffff;
+    
+        h2 {
+        color: white;
+        }
+    
+        div {
+        
+            .Widget {
+                background-color: #333333;
+
+                h4{
+                    color: white;
+                }
+
+            }
+            
+            input, textarea, select {
+                color: #000000;
+            }
+        }
+    }
+}
+
+  
+.Slot {
+    padding: 20px;
+    background-color: #2b2b2bd2;
+    border-radius: 10px;
+}
+
+.Time {
+    color: #06a284;
+}
+
+.Links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    a {
+        border-radius: 50rem;
+        padding: 5px;
+        padding-left: 8px;
+        padding-right: 8px;
+        transition: .2s;
+        text-decoration: none;
+
+        &:hover {
+        background-color: #4d4d4d;
+        color: #06a284;
+        }
+    }
+}
+
+.Search {
+    padding: 0;
+    margin: 0;
+
+    input {
+        border-radius: 50rem;
+        background-color: #414141a2;
+        border: none;
+        color: #e7e7e7;
+        caret-color: #06a284;
+        padding-left: 10%;
+        text-align: left;
+    }
+}
+
+// .Suggestions {
+//     justify-content: center !important;
+//     background: none !important;
+//     border-radius: 1rem !important;
+//     text-shadow: 1px 1px 1px #000000 !important;
+// }
+
+.Search {
+    input {
+        &:placeholder-shown {
+            color: #bebebe;
+            content: "asdasd";
+        }
+    }
+}
