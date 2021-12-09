@@ -85,11 +85,16 @@
 .Search input {
   border-radius: 50rem;
   background-color: #414141a2;
-  border: none;
+  border: solid 2px #4d4d4d !important;
   color: #e7e7e7;
   caret-color: #06a284;
   padding-left: 10%;
   text-align: left;
+  font-size: 1.8rem;
+}
+
+.Search input:hover, .Search input:focus {
+  border: solid 2px #06a284 !important;
 }
 
 .Search input:placeholder-shown {
