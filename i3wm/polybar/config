@@ -1,0 +1,554 @@
+;--------------------------------------------
+; colors                                    ;
+;--------------------------------------------
+
+
+[colors]
+
+	bar_bg = #d2d2d2
+	bar_fg = #06a284
+
+	border_col = #06a284
+
+	modules_bg = #000000
+	modules_fg = #06a284
+
+	mod_bg = #06a284
+
+	modules_prefix_bg = #000000
+	modules_prefix_fg = #06a284
+
+	urgent_bg  = #FA7301
+	focused_bg = #06a284
+
+	essid_p_bg   = #06a284
+	down_p_bg    = #5e606c
+	cpu_p_bg     = #06a284
+	ram_p_bg     = #06a284
+	vol_p_bg     = #637b81
+	bright_p_bg  = #c29f6f
+	time_p_bg    = #06a284
+
+;--------------------------------------------
+; bars                                      ;
+;--------------------------------------------
+[bar/root]
+	width = 10%
+	height = 1%
+	override-redirect = true
+	wm-restack = i3
+	line-size = 2
+	line-color = #06a284
+
+[bar/back]
+	; empty bar to achieve the needed space, without this, the modules 'float on top of the windows'
+	; You can spot the 1 px sized bar on the left if you insist to try.
+	inherit = bar/root
+	width = 1
+	height = 1
+	modules-left = i3
+	background = #ff0000
+
+[bar/wsbar]
+	inherit  = bar/root
+	dpi      = 192
+	width    = 10%
+	height   = 20
+	offset-x = 0
+	offset-y = 0
+
+
+
+	bottom = false
+
+	background = #444444
+	border-size = 3
+	border-color = #00000000
+
+	radius = 10
+
+	spacing            = 0
+	padding-left       = 5
+	padding-right      = 5
+	module-margin-left = 0  
+	margin-left		   = 0
+	margin-right	   = 0 
+
+	font-0 = Inter:size=5:style=Regular;3
+	font-1 = Noto Sans CJK JP:size=5:style=Regular;3
+	font-2 = Inter:size=9:style=Bold;3
+	font-3 = Noto Sans CJK JP:size=9:style=Bold;3
+	font-4 = Inter:size=9:style=Italic;3
+	font-5 = Noto Sans CJK JP:size=9:style=Italic;3
+	font-6 = Noto Sans Symbols2:size=6:style=Regular;3
+	
+	modules-left = i3
+
+	fixed-center = true
+	enable-ipc = true
+
+	monitor = ${env:MONITOR:}
+
+[bar/window]
+	inherit	 = bar/root
+	dpi      = 192
+	width    = 30%
+	height   = 20
+	offset-x = 30%
+	offset-y = 0
+
+	bottom = false
+
+	background = #444444
+	border-size = 3
+	border-color = #00000000
+
+	radius = 10
+
+	spacing            = 0
+	padding-left       = 5
+	padding-right      = 5
+	module-margin-left = 0  
+	margin-left		   = 0
+	margin-right	   = 0 
+
+	font-0 = Inter:size=5:style=Regular;3
+	font-1 = Noto Sans CJK JP:size=5:style=Regular;3
+	font-2 = Inter:size=9:style=Bold;3
+	font-3 = Noto Sans CJK JP:size=9:style=Bold;3
+	font-4 = Inter:size=9:style=Italic;3
+	font-5 = Noto Sans CJK JP:size=9:style=Italic;3
+	font-6 = Noto Sans Symbols2:size=6:style=Regular;3
+	
+
+	modules-center = xwindow
+	
+
+	fixed-center = true
+	enable-ipc = true
+
+	monitor = ${env:MONITOR:}
+
+[bar/settings]
+	inherit  = bar/root
+	dpi      = 192
+	width    = 30%
+	height   = 20
+	offset-x = 70%
+	offset-y = 0
+
+	bottom = false
+
+	background = #444444
+	border-size = 3
+	border-color = #00000000
+
+	radius = 10
+
+	spacing            = 0
+	padding-left       = 5
+	padding-right      = 5
+	module-margin-left = 0  
+	margin-left		   = 0
+	margin-right	   = 0 
+
+	font-0 = Inter:size=5:style=Regular;3
+	font-1 = Noto Sans CJK JP:size=5:style=Regular;3
+	font-2 = Inter:size=9:style=Bold;3
+	font-3 = Noto Sans CJK JP:size=9:style=Bold;3
+	font-4 = Inter:size=9:style=Italic;3
+	font-5 = Noto Sans CJK JP:size=9:style=Italic;3
+	font-6 = Noto Sans Symbols2:size=6:style=Regular;3
+	
+	modules-left = cpu padding ram padding volume
+	modules-center = date 
+	modules-right = powermenu
+
+	fixed-center = true
+	enable-ipc = true
+
+	monitor = ${env:MONITOR:}
+
+[bar/mon2]
+	override-redirect = true
+	dpi      = 192
+	width    = 100%
+	height   = 20
+	offset-x = 0
+	offset-y = 0
+	
+	line-size = 2
+	line-color = #06a284
+
+	bottom = false
+
+	background = #444444
+	radius = 10
+	border-size = 3
+	border-color = #00000000
+
+	spacing            = 0
+	padding-left       = 5
+	padding-right      = 5
+	module-margin-left = 0  
+	margin-left		   = 0
+	margin-right	   = 0 
+
+	font-0 = Inter:size=5:style=Regular;3
+	font-1 = Noto Sans CJK JP:size=5:style=Regular;3
+	font-2 = Inter:size=9:style=Bold;3
+	font-3 = Noto Sans CJK JP:size=9:style=Bold;3
+	font-4 = Inter:size=9:style=Italic;3
+	font-5 = Noto Sans CJK JP:size=9:style=Italic;3
+
+	modules-left = i3
+	modules-center = xwindow padding
+	modules-right  = spotify-prev spotify spotify-next volume padding network padding date
+
+
+	monitor = HDMI-0
+
+	enable-ipc = true
+
+
+;--------------------------------------------
+; modules                                   ;
+;--------------------------------------------
+
+[module/powermenu]
+	type = custom/menu
+	expand-right = false
+	format-spacing = 2
+	format-padding = 0
+	label-font = Noto Sans
+	label-open = ⏻
+	label-open-foreground = #FA7301
+	label-close = 🗙
+	label-close-foreground = #FA7301
+	label-separator = " "
+	label-separator-foreground = #FA7301
+
+	menu-0-0 = ⭯
+	menu-0-0-exec = menu-open-1
+	menu-0-1 = ⏻
+	menu-0-1-exec = menu-open-2
+	menu-0-2 = ⏾
+	menu-0-2-exec = menu-open-3
+
+	menu-1-0 = reboot
+	menu-1-0-exec = reboot
+	menu-1-1 = ⮌
+	menu-1-1-exec = menu-open-0
+
+	menu-2-0 = now
+	menu-2-0-exec = shutdown now
+	menu-2-1 = 60 ⏳
+	menu-2-1-exec = shutdown
+	menu-2-2 = ⮌
+	menu-2-2-exec = menu-open-0
+
+	menu-3-0 = suspend
+	menu-3-0-exec = i3lock -c 000000
+	menu-3-1 = %{T7}⮌%{T-}
+	menu-3-1-exec = menu-open-0
+
+[module/network]
+	type          = internal/network
+	interface     = enp3s0
+	ping-interval = 3
+
+	label-padding = 8
+	label-connected = ▼%downspeed:9%  ▲%upspeed:9%
+	label-connected-foreground = #ffffff
+
+	label-disconnected = not connected
+	label-disconnected-foreground = #FA7301
+
+[module/xwindow]
+	y-offset      = 10
+	type          = internal/xwindow
+	format        = <label>
+	label         = %title:9%
+	label-padding = 3
+
+	label-font = 1
+	label-foreground = #ffffff
+	label-urgent-underline = #FA7301
+	label-maxlen = 60
+
+	label-empty = None
+	label-empty-foreground = #444444
+	label-empty-underline = #FA7301
+	label-empty-padding = 5
+
+[module/i3]
+	type = internal/i3
+	
+	
+	pin-workspaces = false
+	
+	strip-wsnumbers = true
+	
+	index-sort = true
+	
+	enable-click = true
+	
+	enable-scroll = false
+	
+	wrapping-scroll = false
+	
+	reverse-scroll = false
+	
+	fuzzy-match = true
+	
+	ws-icon-0 = "1"
+	ws-icon-1 = "2"
+	ws-icon-2 = "3"
+	ws-icon-3 = "4"
+	ws-icon-4 = spotify;5
+	ws-icon-5 = "6"
+	ws-icon-6 = "7"
+	ws-icon-7 = "8"
+	ws-icon-8 = "9"
+	ws-icon-9 = "10"
+	ws-icon-default = "WS"
+	
+	
+	format = <label-state> <label-mode>
+
+	label-mode = %mode%
+	label-mode-padding = 2
+	label-mode-foreground = #ffffff
+	label-mode-background = #999999
+	
+	label-unfocused = %index%
+	label-unfocused-foreground = #ffffff
+	label-unfocused-padding = 2
+	
+	label-focused = %index%
+	label-focused-foreground = #ffffff
+	label-focused-underline = #06a284
+	label-focused-padding = 2
+	
+	label-visible = %index%
+	label-visible-foreground = #ffffff
+	label-visible-padding = 2
+	
+	label-urgent = %index%
+	label-urgent-background = #FA7301
+	label-urgent-padding = 2
+
+[module/date]
+	type     = internal/date
+	interval = 1.0
+	time     = "%d.%m.%Y %H:%M"
+	label    = "%time%"
+
+	format         = <label>
+	format-padding = 0
+
+	label-underline = #06a284
+	label-foreground = #ffffff
+	label-padding    = 2
+	label-font-size = 16
+
+[module/battery]
+	type          = internal/battery
+	full-at       = 98
+	battery       = BAT0
+	adapter       = AC0
+	poll-interval = 5
+
+	format-charging = <label-charging>
+
+	label-charging            = "%percentage%%"
+	label-charging-background = ${xrdb:color7}
+	label-charging-foreground = ${xrdb:color0}
+	label-charging-padding    = 4
+
+	format-discharging = <label-discharging>
+
+	label-discharging            = "%percentage%%"
+	label-discharging-background = ${xrdb:color7}
+	label-discharging-foreground = ${xrdb:color0}
+	label-discharging-padding    = 4
+
+	format-full = <label-full>
+
+	label-full            = "%percentage%%"
+	label-full-background = ${xrdb:color7}
+	label-full-foreground = ${xrdb:color0}
+	label-full-padding    = 4
+
+[module/volume]
+	type          = internal/pulseaudio
+	format-volume = <label-volume>
+
+	mapped = true
+	label-volume            = "🕪 %percentage%%"
+	label-volume-underline = #06a284
+	label-volume-foreground = #ffffff
+	label-volume-padding    = 1
+
+	format-muted = <label-muted>
+
+	label-muted            = "🕨 0%"
+	label-muted-foreground = #ffffff
+	label-muted-underline = #FA7301
+	label-muted-padding    = 1
+
+	format-volume-padding = 0
+	format-muted-padding  = 0
+
+	ramp-headphones-0 = 
+
+[module/cpu]
+	type             = internal/cpu
+	interval         = 0.5
+	format           = <label>
+	label            = 🗠 %percentage%%
+	label-underline = #06a284
+	label-foreground = #ffffff
+	label-padding    = 1
+
+[module/ram]
+	type     = internal/memory
+	interval = 1
+	format = <label>
+	label            = 🖫 %gb_used%
+	label-underline = #06a284
+	label-foreground = #ffffff
+	label-padding    = 1
+
+[module/essid]
+	inherit = module/network
+
+	format-connected = <label-connected>
+
+	format-connected-prefix              = ""
+	format-connected-prefix-padding      = 1
+	format-connected-prefix-padding-left = 1
+	format-connected-prefix-background   = ${xrdb:color0}
+	format-connected-prefix-foreground   = ${xrdb:color5}
+
+	label-connected               = "%essid%"
+	label-connected-background    = ${xrdb:color0}
+	label-connected-foreground    = ${xrdb:color5}
+	label-connected-padding       = 1
+	label-connected-padding-right = 1
+
+	ramp-signal-background    = ${xrdb:color0}
+	ramp-signal-foreground    = ${xrdb:color5}
+	ramp-connected-foreground = ${xrdb:color5}
+	ramp-signal-padding       = 1
+
+	format-disconnected = <label-disconnected>
+
+	format-disconnected-prefix              = ""
+	format-disconnected-prefix-padding      = 1
+	format-disconnected-prefix-padding-left = 1
+	format-disconnected-prefix-background   = ${xrdb:color0}
+	format-disconnected-prefix-foreground   = ${xrdb:color7}
+
+	label-disconnected               = "DISCONNECTED"
+	label-disconnected-background    = ${xrdb:color0}
+	label-disconnected-foreground    = ${xrdb:color7}
+	label-disconnected-padding       = 1
+	label-disconnected-padding-right = 1
+
+
+[module/down]
+	inherit = module/network
+
+	format-connected = <label-connected>
+
+	format-connected-prefix            = 
+	format-connected-prefix-background = ${colors.down_p_bg}
+	format-connected-prefix-foreground = ${colors.modules_prefix_fg}
+	format-connected-prefix-padding    = 1
+
+	label-connected               = %{T2}%downspeed:7%%{T-}
+	label-connected-background    = ${colors.modules_bg}
+	label-connected-foreground    = ${colors.modules_fg}
+	label-connected-padding-right = 1
+
+[module/padding]
+	type               = custom/text
+	content            = ||
+	content-padding    = 1
+	content-foreground = #000f0f0f
+	content-background = #444444
+
+[module/paddinglite]
+	type               = custom/text
+	content            = |
+	content-padding    = .5
+	content-foreground = ${xrdb:color18}
+	content-background = ${xrdb:color18}
+
+[module/rounded]
+	type               = custom/text
+	content            = ""
+	content-padding    = 1
+	content-foreground = #000f0f0f
+	content-background = #444444
+
+
+[module/mon2]
+
+	type            = internal/i3
+	format          = <label-state><label-mode>
+	index-sort      = true
+	wrapping-scroll = false
+	strip-wsnumbers = true
+
+	label-mode-background = #000f0f0f
+	label-mode-foreground = ${xrdb:color7}
+	label-mode-padding    = 1
+
+	label-focused            = %name%
+	label-focused-background = #000f0f0f
+	label-focused-foreground = ${xrdb:color2}
+	label-focused-padding    = 1
+
+	label-unfocused            = %name%
+	label-unfocused-background = #000f0f0f
+	label-unfocused-foreground = ${xrdb:color7}
+	label-unfocused-padding    = 1
+
+	label-visible            = %name%
+	label-visible-background = #000f0f0f
+	label-visible-foreground = ${xrdb:color7}
+	label-visible-padding    = 1
+
+	label-urgent            = •
+	label-urgent-background = ${xrdb:color7}
+	label-urgent-foreground = ${xrdb:color1}
+	label-urgent-padding    = 1
+
+	pin-workspaces = true
+
+
+[module/openbox]
+	type                      = internal/xworkspaces
+	pin-workspaces            = true
+	enable-click              = false
+	enable-scroll             = false
+	format                    = <label-state>
+	label-monitor             = %name%
+	label-active              = %icon%%name%
+	label-active-foreground   = ${colors.obfg}
+	label-active-background   = ${colors.obbg}
+	label-active-underline    = #fba922
+	label-active-padding      = 1
+	label-occupied            = %name%
+	label-occupied-background = ${colors.obbg}
+	label-occupied-padding    = 1
+	label-urgent              = %index%
+	label-urgent-foreground   = #000000
+	label-urgent-background   = #bd2c40
+	label-urgent-underline    = #9b0a20
+	label-empty               = %name%
+	label-empty-padding       = 1
+	label-empty-background    = ${colors.obibg}
+	label-empty-foreground    = ${colors.obifg}
