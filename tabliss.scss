@@ -1,6 +1,7 @@
 .Overlay {
     position: absolute;
-    left: 94%;
+    left: unset;
+    right: 0px!important;
     width: max-content;
     display: flex;
     flex-direction: row-reverse;
@@ -10,7 +11,8 @@
 .Settings {
     .plane {
         position: absolute;
-        left: 82.8%;
+        left: unset;
+        right: 0px!important;
         border-radius: 1rem 0 0 1rem;
         overflow-y: auto;
         background-color: #4d4d4d;
@@ -43,11 +45,21 @@
     padding: 20px;
     background-color: #2b2b2bd2;
     border-radius: 10px;
+    
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+    
 }
 
 .Time {
     color: #06a284;
 }
+
 
 .Links {
     display: flex;
@@ -61,6 +73,7 @@
         padding-right: 8px;
         transition: .2s;
         text-decoration: none;
+        font-size: 1.5rem;
 
         &:hover {
         background-color: #4d4d4d;
