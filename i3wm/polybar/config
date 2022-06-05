@@ -119,6 +119,7 @@
 	font-4 = Inter:size=9:style=Italic;3
 	font-5 = Noto Sans CJK JP:size=9:style=Italic;3
 	font-6 = Noto Sans Symbols2:size=6:style=Regular;3
+	font-7 = Fira Mono Bold Nerd Font Complete Mono:size=9:style=Regular;3
 	
 
 	modules-center = xwindow
@@ -159,10 +160,10 @@
 	font-4 = Inter:size=9:style=Italic;3
 	font-5 = Noto Sans CJK JP:size=9:style=Italic;3
 	font-6 = Noto Sans Symbols2:size=6:style=Regular;3
+	font-7 = Fira Mono Nerd Font:size=6:style=Regular;3
 	
-	modules-left = cpu padding ram padding volume
-	modules-center = date 
-	modules-right = powermenu
+	modules-left = cpu padding ram padding volume padding network padding bluetooth padding
+	modules-right = date
 
 	fixed-center = true
 	enable-ipc = true
@@ -235,7 +236,7 @@
 	menu-0-2 = ⏾
 	menu-0-2-exec = menu-open-3
 
-	menu-1-0 = reboot
+	menu-1-0 = ⭯
 	menu-1-0-exec = reboot
 	menu-1-1 = ⮌
 	menu-1-1-exec = menu-open-0
@@ -247,9 +248,9 @@
 	menu-2-2 = ⮌
 	menu-2-2-exec = menu-open-0
 
-	menu-3-0 = suspend
+	menu-3-0 = ⏾
 	menu-3-0-exec = i3lock -c 000000
-	menu-3-1 = %{T7}⮌%{T-}
+	menu-3-1 = ⮌
 	menu-3-1-exec = menu-open-0
 
 [module/network]
@@ -257,12 +258,89 @@
 	interface     = enp3s0
 	ping-interval = 3
 
+	format-connected =  <label-connected>
+
 	label-padding = 8
-	label-connected = ▼%downspeed:9%  ▲%upspeed:9%
+	label-connected = %linkspeed%
 	label-connected-foreground = #ffffff
 
-	label-disconnected = not connected
+	label-disconnected = 
 	label-disconnected-foreground = #FA7301
+
+[module/wlan]
+	type          = internal/network
+	interface     = wlp2s0
+	ping-interval = 1
+
+	format-connected = <ramp-signal>
+
+	; label-connected = 
+	; label-connected-foreground = #ffffff
+
+	label-disconnected = 睊
+
+	label-disconnected-foreground = #FA7301ule/network]
+	
+	ramp-signal-0 = 
+	ramp-signal-0-foreground = #00ff00
+	ramp-signal-1 = 
+	ramp-signal-1-foreground = #ffff00
+	ramp-signal-2 = 
+	ramp-signal-2-foreground = #ff0000
+
+[module/bluetooth]
+	type = custom/menu
+	expand-right = false
+	format-spacing = 2
+	format-padding = 0
+	label-font = Noto Sans
+	label-open = 
+	label-open-foreground = #287AA9
+	label-close = 🗙
+	label-close-foreground = #FA7301
+	label-separator = " "
+	label-separator-foreground = #FA7301
+
+	menu-0-0 = 
+	menu-0-0-foreground = #287AA9
+	menu-0-0-exec = menu-open-1
+	menu-0-1 = 
+	menu-0-1-foreground = #287AA9
+	menu-0-1-exec = menu-open-2
+
+	menu-1-0 =  TT
+	menu-1-0-foreground = #287AA9
+	menu-1-0-exec = bluetoothctl connect E8:AB:FA:2B:01:B6
+	menu-1-1 =  Aky
+	menu-1-1-foreground = #287AA9
+	menu-1-1-exec = bluetoothctl connect 41:42:96:17:F2:EA
+	menu-1-2 = ⮌
+	menu-1-2-exec = menu-open-0
+
+	menu-2-0 =  TT
+	menu-2-0-foreground = #287AA9
+	menu-2-0-exec = bluetoothctl disconnect E8:AB:FA:2B:01:B6
+	menu-2-1 =  Aky
+	menu-2-1-foreground = #287AA9
+	menu-2-1-exec = bluetoothctl disconnect 41:42:96:17:F2:EA
+	menu-2-2 = ⮌
+	menu-2-2-exec = menu-open-0
+
+[module/brightness]
+	type = custom/script
+	exec = /home/jt/.config/polybar/brightness.sh
+	format = <label>
+	format-foreground = #ffffff
+	format-padding = 2
+
+
+	label = 
+
+	click-left = brightnessctl s +10% -q
+	click-right = brightnessctl s 10%- -q
+
+	scroll-up = brightnessctl s +5% -q
+	scroll-down = brightnessctl s 5%- -q
 
 [module/xwindow]
 	y-offset      = 10
@@ -350,49 +428,60 @@
 	label-underline = #06a284
 	label-foreground = #ffffff
 	label-padding    = 2
-	label-font-size = 16
 
 [module/battery]
 	type          = internal/battery
 	full-at       = 98
-	battery       = BAT0
-	adapter       = AC0
+	battery       = BAT1
+	adapter       = ACAD
 	poll-interval = 5
 
-	format-charging = <label-charging>
+	format-charging = <animation-charging> <label-charging>
 
-	label-charging            = "%percentage%%"
-	label-charging-background = ${xrdb:color7}
-	label-charging-foreground = ${xrdb:color0}
-	label-charging-padding    = 4
+	label-charging            = %percentage%%
+	label-charging-foreground = #00ff00
+	label-charging-padding    = 2
+	animation-charging-0 = 
+	animation-charging-1 = 
+	animation-charging-2 = 
+	animation-charging-3 = 
+	animation-charging-4 = 
 
-	format-discharging = <label-discharging>
+	format-discharging = <ramp-capacity> <label-discharging>
 
-	label-discharging            = "%percentage%%"
-	label-discharging-background = ${xrdb:color7}
-	label-discharging-foreground = ${xrdb:color0}
-	label-discharging-padding    = 4
+	label-discharging            = %percentage%%
+	label-discharging-foreground = #ffffff
+	label-discharging-padding    = 2
 
-	format-full = <label-full>
+	ramp-capacity-0 = 
+	ramp-capacity-0-foreground = #FA7301
+	ramp-capacity-1 = 
+	ramp-capacity-2 = 
+	ramp-capacity-3 = 
+	ramp-capacity-4 = 
 
-	label-full            = "%percentage%%"
-	label-full-background = ${xrdb:color7}
-	label-full-foreground = ${xrdb:color0}
-	label-full-padding    = 4
+	format-full = <label-full>
+
+	label-full            = %percentage%%
+	label-full-foreground = #ffffff
+	label-full-padding    = 2
 
 [module/volume]
 	type          = internal/pulseaudio
-	format-volume = <label-volume>
+	format-volume = <ramp-volume> <label-volume>
+	format-volume-underline = #06a284
+	interval = 5
 
 	mapped = true
-	label-volume            = "🕪 %percentage%%"
+	label-volume            =  %percentage%%
 	label-volume-underline = #06a284
 	label-volume-foreground = #ffffff
 	label-volume-padding    = 1
 
-	format-muted = <label-muted>
+	format-muted = 婢 <label-muted>
+	format-muted-underline = #FA7301
 
-	label-muted            = "🕨 0%"
+	label-muted            = "0%"
 	label-muted-foreground = #ffffff
 	label-muted-underline = #FA7301
 	label-muted-padding    = 1
@@ -400,7 +489,9 @@
 	format-volume-padding = 0
 	format-muted-padding  = 0
 
-	ramp-headphones-0 = 
+	ramp-volume-0 = 奄
+	ramp-volume-1 = 奔
+	ramp-volume-2 = 墳
 
 [module/cpu]
 	type             = internal/cpu
@@ -415,7 +506,7 @@
 	type     = internal/memory
 	interval = 1
 	format = <label>
-	label            = 🖫 %gb_used%
+	label            =  %gb_used%
 	label-underline = #06a284
 	label-foreground = #ffffff
 	label-padding    = 1
