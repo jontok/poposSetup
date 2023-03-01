@@ -90,9 +90,9 @@
 [bar/window]
 	inherit	 = bar/root
 	dpi      = 192
-	width    = 96%
+	width    = 98%
 	height   = 25
-	offset-x = 2%
+	offset-x = 1%
 	offset-y = 0
 
 	bottom = false
@@ -110,22 +110,27 @@
 	margin-left		   = 0
 	margin-right	   = 0 
 
-	font-0 = Inter:size=5:style=Regular;3
-	font-1 = Noto Sans CJK JP:size=5:style=Regular;3
-	font-2 = Inter:size=9:style=Bold;3
-	font-3 = Noto Sans CJK JP:size=9:style=Bold;3
-	font-4 = Inter:size=9:style=Italic;3
-	font-5 = Noto Sans CJK JP:size=9:style=Italic;3
-	font-6 = Noto Sans Symbols2:size=6:style=Regular;3
-	font-7 = Fira Mono Bold Nerd Font Complete Mono:size=9:style=Regular;3
+	font-0 = Symbols Nerd Font Mono:size=5:style=Regular;3
+	font-1 = Inter:size=5:style=Regular;3
+
+	font-2 = Noto Sans CJK JP:size=5:style=Regular;3
+	font-3 = Inter:size=9:style=Bold;3
+	font-4 = Noto Sans CJK JP:size=9:style=Bold;3
+	font-5 = Inter:size=9:style=Italic;3
+	font-6 = Noto Sans CJK JP:size=9:style=Italic;3
+	font-7 = Noto Sans Symbols2:size=6:style=Regular;3
+	font-8 = Fira Mono Bold Nerd Font Complete Mono:size=9:style=Regular;3
 	
 	modules-left = i3
 	modules-center = xwindow
-	modules-right = cpu padding ram padding volume padding network padding bluetooth padding date
+	modules-right = cpu padding ram padding volume padding battery padding bluetooth padding wlan padding network padding date
 
 	fixed-center = true
 	enable-ipc = true
-
+	tray-position = right
+	tray-padding = 5
+	tray-offset-x = 0
+	tray-detached = false
 	monitor = ${env:MONITOR:}
 
 [bar/settings]
@@ -160,7 +165,7 @@
 	font-6 = Noto Sans Symbols2:size=6:style=Regular;3
 	font-7 = Fira Mono Nerd Font:size=6:style=Regular;3
 	
-	modules-left = cpu padding ram padding volume padding network padding bluetooth padding tray
+	modules-left = cpu padding ram padding volume padding network padding bluetoot padding
 	modules-right = date
 
 
@@ -258,21 +263,21 @@
 
 [module/network]
 	type          = internal/network
-	interface     = enp3s0
+	interface     = enp0s31f6
 	ping-interval = 3
 
-	format-connected =  <label-connected>
+	format-connected = 🖧 <label-connected>
 
 	label-padding = 8
 	label-connected = %linkspeed%
 	label-connected-foreground = #ffffff
 
 	label-disconnected = 
-	label-disconnected-foreground = #FA7301
+	label-disconnected-foreground = #ffffff
 
 [module/wlan]
 	type          = internal/network
-	interface     = wlp4s0
+	interface     = wlp9s0
 	ping-interval = 1
 
 	format-connected = <ramp-signal>
@@ -280,54 +285,27 @@
 	; label-connected = 
 	; label-connected-foreground = #ffffff
 
-	label-disconnected = 睊
+	label-disconnected = 󰤭
 
-	label-disconnected-foreground = #FA7301ule/network]
+	label-disconnected-foreground = #FA7301
 	
-	ramp-signal-0 = 
-	ramp-signal-0-foreground = #00ff00
-	ramp-signal-1 = 
-	ramp-signal-1-foreground = #ffff00
-	ramp-signal-2 = 
-	ramp-signal-2-foreground = #ff0000
+	ramp-signal-0 = 󰤯
+	ramp-signal-0-foreground = #ffffff
+	ramp-signal-1 = 󰤟
+	ramp-signal-1-foreground = #ffffff
+	ramp-signal-2 = 󰤢
+	ramp-signal-2-foreground = #ffffff
+	ramp-signal-3 = 󰤨
+	ramp-signal-3-foreground = #ffffff
 
 [module/bluetooth]
-	type = custom/menu
-	expand-right = false
-	format-spacing = 2
-	format-padding = 0
-	label-font = Noto Sans
-	label-open = 
-	label-open-foreground = #287AA9
-	label-close = 🗙
-	label-close-foreground = #FA7301
-	label-separator = " "
-	label-separator-foreground = #FA7301
-
-	menu-0-0 = 
-	menu-0-0-foreground = #287AA9
-	menu-0-0-exec = menu-open-1
-	menu-0-1 = 
-	menu-0-1-foreground = #287AA9
-	menu-0-1-exec = menu-open-2
-
-	menu-1-0 =  TT
-	menu-1-0-foreground = #287AA9
-	menu-1-0-exec = bluetoothctl connect E8:AB:FA:2B:01:B6
-	menu-1-1 =  Aky
-	menu-1-1-foreground = #287AA9
-	menu-1-1-exec = bluetoothctl connect 41:42:96:17:F2:EA
-	menu-1-2 = ⮌
-	menu-1-2-exec = menu-open-0
-
-	menu-2-0 =  TT
-	menu-2-0-foreground = #287AA9
-	menu-2-0-exec = bluetoothctl disconnect E8:AB:FA:2B:01:B6
-	menu-2-1 =  Aky
-	menu-2-1-foreground = #287AA9
-	menu-2-1-exec = bluetoothctl disconnect 41:42:96:17:F2:EA
-	menu-2-2 = ⮌
-	menu-2-2-exec = menu-open-0
+	type = custom/script
+	format = <label>
+	format-foreground = #ffffff
+	format-padding = 2
+	exec = ""
+	label = 
+	click-left = "$HOME/.config/rofi/rofi-bluetooth/rofi-bluetooth"
 
 [module/brightness]
 	type = custom/script
@@ -435,15 +413,15 @@
 [module/battery]
 	type          = internal/battery
 	full-at       = 98
-	battery       = BAT1
-	adapter       = ACAD
+	battery       = BAT0
+	adapter       = AC
 	poll-interval = 5
 
 	format-charging = <animation-charging> <label-charging>
 
 	label-charging            = %percentage%%
 	label-charging-foreground = #00ff00
-	label-charging-padding    = 2
+	label-charging-padding    = 1
 	animation-charging-0 = 
 	animation-charging-1 = 
 	animation-charging-2 = 
@@ -481,7 +459,7 @@
 	label-volume-foreground = #ffffff
 	label-volume-padding    = 1
 
-	format-muted = 婢 <label-muted>
+	format-muted = 🔇 <label-muted>
 	format-muted-underline = #FA7301
 
 	label-muted            = "0%"
@@ -492,9 +470,9 @@
 	format-volume-padding = 0
 	format-muted-padding  = 0
 
-	ramp-volume-0 = 奄
-	ramp-volume-1 = 奔
-	ramp-volume-2 = 墳
+	ramp-volume-0 = 🕨
+	ramp-volume-1 = 🕩
+	ramp-volume-2 = 🕪
 
 [module/cpu]
 	type             = internal/cpu
@@ -509,7 +487,7 @@
 	type     = internal/memory
 	interval = 1
 	format = <label>
-	label            =  %gb_used%
+	label            = 🖫 %gb_used%
 	label-underline = #06a284
 	label-foreground = #ffffff
 	label-padding    = 1
