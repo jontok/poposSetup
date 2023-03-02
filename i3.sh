@@ -22,7 +22,7 @@ echo ""
 echo "[RUNNING] Setup i3 and Polybar..."
 echo "[RUNNING] Installing i3 4.22..."
 git clone https://github.com/i3/i3.git
-mv -r i3 i3wm
+mv -R i3 i3wm
 cd i3wm
 make && sudo make install 
 cd ..
