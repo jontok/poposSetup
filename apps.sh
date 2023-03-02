@@ -7,7 +7,7 @@ sudo apt update && sudo apt upgrade -y
 echo ""
 
 echo "[RUNNING] Install htop, nano, neofetch, tweaks..."
-sudo apt install git htop nano neofetch neovim arandr pavucontrol 
+sudo apt install htop nano neofetch neovim arandr pavucontrol 
 echo ""
 
 echo "[RUNNING] Get GTK-Theme Flat Remix..."

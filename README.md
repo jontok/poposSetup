@@ -5,6 +5,9 @@ Install scripts for my personalized desktop-environment.
 
 ## Installing
 
+### Dependencies
+`sudo apt install git`
+
 Install the last version of [Pop_!OS](https://pop.system76.com/)
 
 ```bash
