@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "[PREPARING] Setup"
 sleep 1
+sudo add-apt-repository ppa:regolith-linux/release
 sudo apt update && sudo apt upgrade -y
 sleep 1
 echo ""
@@ -11,6 +12,7 @@ sleep 1
 #Install Dependencies
 sudo apt install -y i3 polybar neofetch picom nitrogen firefox lxappearance rofi
 sudo apt install -y autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util-dev libxcb-xrm-dev libxcb-xtest0-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev
+sudo apt install i3-gaps
 echo ""
 
 echo "[RUNNING] Setup BASH..."
@@ -29,6 +31,7 @@ echo ""
 echo "[RUNNING] Configureing i3 & polybar..."
 cd i3wm/
 cp i3/config i3/lock.sh $HOME/.config/i3/
+mkdir $HOME/.config/polybar
 cp polybar/brightness.sh polybar/launch.sh $HOME/.config/polybar/
 cd ..
 echo ""
