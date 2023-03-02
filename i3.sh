@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "[PREPARING] Setup"
 sleep 1
-sudo add-apt-repository ppa:regolith-linux/release
+sudo add-apt-repository ppa:regolith-linux/stable
 sudo apt update && sudo apt upgrade -y
 sleep 1
 echo ""
