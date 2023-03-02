@@ -15,18 +15,19 @@ sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-de
 echo ""
 
 echo "[RUNNING] Setup BASH..."
-cp .bashrc $HOME/
+cp i3wm/.bashrc $HOME/
 source $HOME/.bashrc
 echo ""
 
 echo "[RUNNING] Setup i3 and Polybar..."
 echo "[RUNNING] Installing i3 4.22..."
 git clone https://github.com/i3/i3.git
-cd i3
+mv -r i3 i3wm
+cd i3wm
 make && sudo make install 
 cd ..
 echo ""
- 
+
 echo "[RUNNING] Installing i3lock-color..."    
 git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
