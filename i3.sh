@@ -1,7 +1,6 @@
 #!/bin/bash
 echo "[PREPARING] Setup"
 sleep 1
-sudo add-apt-repository ppa:regolith-linux/stable
 sudo apt update && sudo apt upgrade -y
 sleep 1
 echo ""
@@ -10,10 +9,9 @@ echo "[PREPARING] Start installing dependencies"
 sleep 1
 
 #Install Dependencies
-sudo apt install -y i3 polybar neofetch picom nitrogen firefox lxappearance rofi
+sudo apt install -y polybar neofetch picom nitrogen firefox lxappearance rofi
 sudo apt install -y autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util-dev libxcb-xrm-dev libxcb-xtest0-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev
 sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool automake
-sudo apt install i3-gaps
 echo ""
 
 echo "[RUNNING] Setup BASH..."
@@ -22,6 +20,13 @@ source $HOME/.bashrc
 echo ""
 
 echo "[RUNNING] Setup i3 and Polybar..."
+echo "[RUNNING] Installing i3 4.22..."
+git clone https://github.com/i3/i3.git
+cd i3
+make && sudo make install 
+cd ..
+echo ""
+ 
 echo "[RUNNING] Installing i3lock-color..."    
 git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
