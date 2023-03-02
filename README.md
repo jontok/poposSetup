@@ -10,6 +10,7 @@ Install the last version of [Pop_!OS](https://pop.system76.com/)
 ```bash
 git clone https://github.com/jontok/poposSetup.git
 cd poposSetup
+git checkout private/desktop
 ```
 
 Installing only the i3/Polybar setup:
