@@ -48,4 +48,23 @@ echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https:/
 sudo apt update && sudo apt install codium
 echo ""
 
+if [[ $1 == "--work" ]] || [[ $1 == "-w" ]]
+then
+    echo "Installing work-apps"
+    echo ""
+
+    echo "[RUNNING] Installing terraform"
+    wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    sudo apt update && sudo apt install terraform
+    echo ""
+
+    echo "[RUNNING] Installing aws-cli"
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+    echo ""
+fi
+
+
 echo "[DONE] Installed App Collection"
