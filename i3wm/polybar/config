@@ -40,53 +40,6 @@
 	line-size = 2
 	line-color = #06a284
 
-[bar/back]
-	; empty bar to achieve the needed space, without this, the modules 'float on top of the windows'
-	; You can spot the 1 px sized bar on the left if you insist to try.
-	inherit = bar/root
-	width = 1
-	height = 1
-	modules-left = i3
-	background = #ff0000
-
-[bar/wsbar]
-	inherit  = bar/root
-	dpi      = 192
-	width    = 10%
-	height   = 25
-	offset-x = 0
-	offset-y = 0
-
-
-
-	bottom = false
-
-	background = #444444
-	border-size = 3
-	border-color = #00000000
-	radius = 5
-
-	spacing            = 0
-	padding-left       = 5
-	padding-right      = 5
-	module-margin-left = 0  
-	margin-left		   = 0
-	margin-right	   = 0 
-	font-0 = Inter:size=5:style=Regular;3
-	font-1 = Noto Sans CJK JP:size=5:style=Regular;3
-	font-2 = Inter:size=9:style=Bold;3
-	font-3 = Noto Sans CJK JP:size=9:style=Bold;3
-	font-4 = Inter:size=9:style=Italic;3
-	font-5 = Noto Sans CJK JP:size=9:style=Italic;3
-	font-6 = Noto Sans Symbols2:size=6:style=Regular;3
-	
-	modules-left = i3
-
-	fixed-center = true
-	enable-ipc = true
-
-	monitor = ${env:MONITOR:}
-
 [bar/window]
 	inherit	 = bar/root
 	dpi      = 192
@@ -123,7 +76,7 @@
 	
 	modules-left = i3
 	modules-center = xwindow
-	modules-right = cpu padding ram padding volume padding bluetooth padding wlan padding network padding date
+	modules-right = cpu padding ram padding volume padding wlan padding network padding date tray
 
 	fixed-center = true
 	enable-ipc = true
@@ -133,137 +86,16 @@
 	tray-detached = false
 	monitor = ${env:MONITOR:}
 
-[bar/settings]
-	inherit  = bar/root
-	dpi      = 192
-	width    = 30%
-	height   = 25
-	offset-x = 70%
-	offset-y = 0
-
-	bottom = false
-
-	background = #444444
-	border-size = 3
-	border-color = #00000000
-
-	radius = 5
-
-	spacing            = 0
-	padding-left       = 5
-	padding-right      = 5
-	module-margin-left = 0  
-	margin-left		   = 0
-	margin-right	   = 0 
-
-	font-0 = Inter:size=5:style=Regular;3
-	font-1 = Noto Sans CJK JP:size=5:style=Regular;3
-	font-2 = Inter:size=9:style=Bold;3
-	font-3 = Noto Sans CJK JP:size=9:style=Bold;3
-	font-4 = Inter:size=9:style=Italic;3
-	font-5 = Noto Sans CJK JP:size=9:style=Italic;3
-	font-6 = Noto Sans Symbols2:size=6:style=Regular;3
-	font-7 = Fira Mono Nerd Font:size=6:style=Regular;3
-	
-	modules-left = cpu padding ram padding volume padding network padding bluetoot padding
-	modules-right = date
-
-
-
-	fixed-center = true
-	enable-ipc = true
-
-	monitor = ${env:MONITOR:}
-
-[bar/mon2]
-	override-redirect = true
-	dpi      = 192
-	width    = 100%
-	height   = 25
-	offset-x = 0
-	offset-y = 0
-	
-	line-size = 2
-	line-color = #06a284
-
-	bottom = false
-
-	background = #444444
-	radius = 10
-	border-size = 3
-	border-color = #00000000
-
-	spacing            = 0
-	padding-left       = 5
-	padding-right      = 5
-	module-margin-left = 0  
-	margin-left		   = 0
-	margin-right	   = 0 
-
-	font-0 = Inter:size=5:style=Regular;3
-	font-1 = Noto Sans CJK JP:size=5:style=Regular;3
-	font-2 = Inter:size=9:style=Bold;3
-	font-3 = Noto Sans CJK JP:size=9:style=Bold;3
-	font-4 = Inter:size=9:style=Italic;3
-	font-5 = Noto Sans CJK JP:size=9:style=Italic;3
-
-	modules-left = i3
-	modules-center = xwindow padding
-	modules-right  = spotify-prev spotify spotify-next volume padding network padding date
-
-
-	monitor = HDMI-0
-
-	enable-ipc = true
-
-
 ;--------------------------------------------
 ; modules                                   ;
 ;--------------------------------------------
-
-[module/powermenu]
-	type = custom/menu
-	expand-right = false
-	format-spacing = 2
-	format-padding = 0
-	label-font = Noto Sans
-	label-open = ⏻
-	label-open-foreground = #FA7301
-	label-close = 🗙
-	label-close-foreground = #FA7301
-	label-separator = " "
-	label-separator-foreground = #FA7301
-
-	menu-0-0 = ⭯
-	menu-0-0-exec = menu-open-1
-	menu-0-1 = ⏻
-	menu-0-1-exec = menu-open-2
-	menu-0-2 = ⏾
-	menu-0-2-exec = menu-open-3
-
-	menu-1-0 = ⭯
-	menu-1-0-exec = reboot
-	menu-1-1 = ⮌
-	menu-1-1-exec = menu-open-0
-
-	menu-2-0 = now
-	menu-2-0-exec = shutdown now
-	menu-2-1 = 60 ⏳
-	menu-2-1-exec = shutdown
-	menu-2-2 = ⮌
-	menu-2-2-exec = menu-open-0
-
-	menu-3-0 = ⏾
-	menu-3-0-exec = i3lock -c 000000
-	menu-3-1 = ⮌
-	menu-3-1-exec = menu-open-0
 
 [module/tray]
 	type = internal/tray
 
 [module/network]
 	type          = internal/network
-	interface     = enp3s0
+	interface     = enp5s0
 	ping-interval = 3
 
 	format-connected = 🖧 <label-connected>
@@ -277,7 +109,7 @@
 
 [module/wlan]
 	type          = internal/network
-	interface     = wlp4s0
+	interface     = wlp6s0
 	ping-interval = 1
 
 	format-connected = <ramp-signal>
@@ -297,15 +129,6 @@
 	ramp-signal-2-foreground = #ffffff
 	ramp-signal-3 = 󰤨
 	ramp-signal-3-foreground = #ffffff
-
-[module/bluetooth]
-	type = custom/script
-	format = <label>
-	format-foreground = #ffffff
-	format-padding = 2
-	exec = ""
-	label = 
-	click-left = "$HOME/.config/rofi/rofi-bluetooth/rofi-bluetooth"
 
 [module/brightness]
 	type = custom/script
@@ -492,58 +315,6 @@
 	label-foreground = #ffffff
 	label-padding    = 1
 
-[module/essid]
-	inherit = module/network
-
-	format-connected = <label-connected>
-
-	format-connected-prefix              = ""
-	format-connected-prefix-padding      = 1
-	format-connected-prefix-padding-left = 1
-	format-connected-prefix-background   = ${xrdb:color0}
-	format-connected-prefix-foreground   = ${xrdb:color5}
-
-	label-connected               = "%essid%"
-	label-connected-background    = ${xrdb:color0}
-	label-connected-foreground    = ${xrdb:color5}
-	label-connected-padding       = 1
-	label-connected-padding-right = 1
-
-	ramp-signal-background    = ${xrdb:color0}
-	ramp-signal-foreground    = ${xrdb:color5}
-	ramp-connected-foreground = ${xrdb:color5}
-	ramp-signal-padding       = 1
-
-	format-disconnected = <label-disconnected>
-
-	format-disconnected-prefix              = ""
-	format-disconnected-prefix-padding      = 1
-	format-disconnected-prefix-padding-left = 1
-	format-disconnected-prefix-background   = ${xrdb:color0}
-	format-disconnected-prefix-foreground   = ${xrdb:color7}
-
-	label-disconnected               = "DISCONNECTED"
-	label-disconnected-background    = ${xrdb:color0}
-	label-disconnected-foreground    = ${xrdb:color7}
-	label-disconnected-padding       = 1
-	label-disconnected-padding-right = 1
-
-
-[module/down]
-	inherit = module/network
-
-	format-connected = <label-connected>
-
-	format-connected-prefix            = 
-	format-connected-prefix-background = ${colors.down_p_bg}
-	format-connected-prefix-foreground = ${colors.modules_prefix_fg}
-	format-connected-prefix-padding    = 1
-
-	label-connected               = %{T2}%downspeed:7%%{T-}
-	label-connected-background    = ${colors.modules_bg}
-	label-connected-foreground    = ${colors.modules_fg}
-	label-connected-padding-right = 1
-
 [module/padding]
 	type               = custom/text
 	content            = ||
@@ -551,76 +322,3 @@
 	content-foreground = #000f0f0f
 	content-background = #444444
 
-[module/paddinglite]
-	type               = custom/text
-	content            = |
-	content-padding    = .5
-	content-foreground = ${xrdb:color18}
-	content-background = ${xrdb:color18}
-
-[module/rounded]
-	type               = custom/text
-	content            = ""
-	content-padding    = 1
-	content-foreground = #000f0f0f
-	content-background = #444444
-
-
-[module/mon2]
-
-	type            = internal/i3
-	format          = <label-state><label-mode>
-	index-sort      = true
-	wrapping-scroll = false
-	strip-wsnumbers = true
-
-	label-mode-background = #000f0f0f
-	label-mode-foreground = ${xrdb:color7}
-	label-mode-padding    = 1
-
-	label-focused            = %name%
-	label-focused-background = #000f0f0f
-	label-focused-foreground = ${xrdb:color2}
-	label-focused-padding    = 1
-
-	label-unfocused            = %name%
-	label-unfocused-background = #000f0f0f
-	label-unfocused-foreground = ${xrdb:color7}
-	label-unfocused-padding    = 1
-
-	label-visible            = %name%
-	label-visible-background = #000f0f0f
-	label-visible-foreground = ${xrdb:color7}
-	label-visible-padding    = 1
-
-	label-urgent            = •
-	label-urgent-background = ${xrdb:color7}
-	label-urgent-foreground = ${xrdb:color1}
-	label-urgent-padding    = 1
-
-	pin-workspaces = true
-
-
-[module/openbox]
-	type                      = internal/xworkspaces
-	pin-workspaces            = true
-	enable-click              = false
-	enable-scroll             = false
-	format                    = <label-state>
-	label-monitor             = %name%
-	label-active              = %icon%%name%
-	label-active-foreground   = ${colors.obfg}
-	label-active-background   = ${colors.obbg}
-	label-active-underline    = #fba922
-	label-active-padding      = 1
-	label-occupied            = %name%
-	label-occupied-background = ${colors.obbg}
-	label-occupied-padding    = 1
-	label-urgent              = %index%
-	label-urgent-foreground   = #000000
-	label-urgent-background   = #bd2c40
-	label-urgent-underline    = #9b0a20
-	label-empty               = %name%
-	label-empty-padding       = 1
-	label-empty-background    = ${colors.obibg}
-	label-empty-foreground    = ${colors.obifg}
