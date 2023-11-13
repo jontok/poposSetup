@@ -11,8 +11,11 @@
 
 # exec_always --no-startup-id xrandr --output DP-1 --mode 1920x1080
 # exec_always --no-startup-id xrandr --output HDMI-0 --mode 1920x1080
-exec_always --no-startup-id xrandr --output DP-1 --right-of HDMI-0
-exec_always --no-startup-id xrandr --output DVI-I-1 --mode 1920x1080 --right-of DP-1
+# exec_always --no-startup-id xrandr --output DP-1 --left-of HDMI-0
+# exec_always --no-startup-id xrandr --output DVI-I-1 --mode 1920x1080 --right-of DP-1
+
+exec_always --no-startup-id /bin/bash -c "$HOME/.screenlayout/ultra_vertical_horizontal.sh"
+exec_always --no-startup-id lxqt-policykit-agent
 
 set $mod Mod4
 for_window [class=".*"] border pixel 2
@@ -73,7 +76,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+c exec --no-startup-id dmenu_run -l 20 -h 20 -sb '#06A284'
-bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-5/launcher.sh
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-1/launcher.sh
 bindsym $mod+p exec --no-startup-id $HOME/.config/rofi/powermenu/type-2/powermenu.sh
 bindsym $mod+c exec --no-startup-id ~/.config/rofi/rofi-bluetooth/rofi-bluetooth
 # A more modern dmenu replacement is rofi:
