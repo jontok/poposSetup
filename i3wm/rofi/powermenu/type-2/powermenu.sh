@@ -19,13 +19,13 @@ uptime="`uptime -p | sed -e 's/up //g'`"
 host=`hostname`
 
 # Options
-shutdown=''
-reboot=''
-lock=''
-suspend=''
-logout=''
-yes=''
-no=''
+shutdown='󰐥'
+reboot='󰜉'
+lock='󰌾'
+suspend='󰤄'
+logout='󰍃'
+yes='󰄬'
+no=''
 
 # Rofi CMD
 rofi_cmd() {
@@ -67,6 +67,9 @@ run_cmd() {
 		elif [[ $1 == '--reboot' ]]; then
 			systemctl reboot
 		elif [[ $1 == '--suspend' ]]; then
+			if [[ -x '/usr/bin/i3lock' ]]; then
+				~/.config/i3/lock.sh
+			fi
 			mpc -q pause
 			amixer set Master mute
 			systemctl suspend
@@ -102,7 +105,7 @@ case ${chosen} in
 			~/.config/i3/lock.sh
 		fi
         ;;
-    $suspend)
+    $suspend)	
 		run_cmd --suspend
         ;;
     $logout)
